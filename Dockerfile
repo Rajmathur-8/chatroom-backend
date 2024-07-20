@@ -1,8 +1,12 @@
-# Use Maven to build the application
+# Use OpenJDK 17 slim as the base image for the build stage
 FROM openjdk:17-jdk-slim AS build
 
 # Set the working directory
 WORKDIR /app
+
+# Install Maven
+RUN apt-get update && \
+    apt-get install -y maven
 
 # Copy the pom.xml and install dependencies
 COPY pom.xml .
