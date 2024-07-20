@@ -1,5 +1,5 @@
 # Use Maven to build the application
-FROM maven:3.8.6-openjdk-17 AS build
+FROM openjdk:17-jdk-slim AS build
 
 # Set the working directory
 WORKDIR /app
@@ -13,7 +13,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Use a base image with OpenJDK 17 to run the application
-FROM openjdk:17-jdk
+FROM openjdk:17-jdk-slim
 
 # Set the working directory
 WORKDIR /app
